@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/table.css' %}">
+
+</head>
+<body>
+
+    {% include "usersexeducationmenu.html" %}
+    
+
+    <h2>Review Table</h2>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>Expert Name</th>
+            <th>User Name</th>
+            <th>Review Date</th>
+            <th>Review</th>
+
+        </tr>
+        </thead>
+        <tbody>
+            {% for value in data %}
+        <tr>
+            
+            <td>{{value.expert_id.expert_name}}</td>
+            <td>{{value.user_id.user_name}}</td>
+            <td>{{value.reviewdate}}</td>
+            <td>{{value.review}}</td>
+
+
+        </tr>
+        {% endfor %}
+        <tbody>
+    </table>
+</div>
+</body>
+</html>

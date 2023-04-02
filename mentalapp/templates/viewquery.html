@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/table.css' %}">
+
+</head>
+<body>
+
+    {% include "expsexeducationmenu.html" %}
+
+    <h2>Query Table</h2>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>User Name</th>
+            <th>Phone Number</th>
+            <th>Query</th>
+            <th>Query Answer</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Upload</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for value in data %}
+        <tr>
+            
+            <td>{{value.user_id.user_name}}</td>
+            <td>{{value.user_id.phone}}</td>
+            <td>{{value.query}}</td>
+            <td>{{value.queryanswer}}</td>
+            <td>{{value.date}}</td>
+            <td>{{value.status}}</td>
+            <td><a href="/upload_answer/{{value.query_id}}" style="color: {% if value.queryanswer == 'NULL' %}
+                red{% else %}blue{% endif %};">Upload_Answer</a></td>
+        </tr>
+        {% endfor %}
+        <tbody>
+    </table>
+</div>
+</body>
+</html>

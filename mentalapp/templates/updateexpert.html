@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+
+<script>
+    function valid()
+    {
+    if(form.phone.value=="")
+    {
+       alert("**Enter your phonenumber**"); 
+       form.phone.focus();
+       return false;
+    }
+    var a=form.phone.value;
+    if(isNaN(a))
+    {
+        alert("**Phonenumber must be in numbers**");
+        form.phone.focus();
+        return false;
+    }
+    if(a.length<10)
+    {
+     alert("**Phonenumber must contain 10 numbers**");
+     form.phone.focus();
+    return false;
+    }
+    if(a.length>10)
+    {
+     alert("**Phonenumber must contain 10 numbers**");
+     form.phone.focus();
+    return false;
+    }
+    if(form.email.value=="")
+    {
+       alert("**Enter your Email**"); 
+       form.email.focus();
+       return false;
+    }
+    var regularExpression = new RegExp("^[a-z]+(\.[a-z0-9_\+-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*\.([a-z]{2,4})$");
+    if (!regularExpression.test(form.email.value))
+    {
+        alert("Enter a valid Email ID.For example:'name@gmail.com'..");
+        form.email.focus();
+        return false;
+    }
+
+
+    return true;
+}
+</script>
+    
+</head>
+
+<body>
+
+     {% include "adminmenu.html" %}
+
+
+    <!-- MAKE AN APPOINTMENT -->
+ <section id="appointment" data-stellar-background-ratio="3">
+    <div class="container">
+         <div class="row">
+
+              <div class="col-md-6 col-sm-6">
+                   <img src="{% static 'images/mentalform01.webp' %}" width="650px" height="1226px" class="img-responsive1" alt="">
+              </div>
+
+              <div class="col-md-6 col-sm-6">
+                   <!-- CONTACT FORM HERE -->
+                   <form id="appointment-form" name="form" role="form" onsubmit="return valid()" method="post" action="/updateexpert1/{{data.expert_id}}">
+                         {% csrf_token %}
+                        <!-- SECTION TITLE -->
+                        <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
+                             <h2>&nbsp;Expert</h2>
+                        </div>
+
+                        <div class="wow fadeInUp" data-wow-delay="0.8s">
+                            <div class="col-md-12 col-sm-12">
+                                <label for="Id">Expert Id</label>
+                                 <input type="text" class="form-control" name="id" value="{{data.expert_id}}" readonly>
+                            </div>
+
+                        <div class="wow fadeInUp" data-wow-delay="0.8s">
+                             <div class="col-md-12 col-sm-12">
+                                <label for="name">Expert Name</label>
+                                  <input type="text" class="form-control" name="name" value="{{data.expert_name}}" readonly>
+                             </div>
+
+                             <div class="wow fadeInUp" data-wow-delay="0.8s">
+                                <div class="col-md-12 col-sm-12">
+                                    <label for="address">Address</label>
+                                    <textarea class="form-control" rows="3" name="address" readonly>{{data.address}}</textarea>
+                                </div>
+
+
+                             <div class="col-md-12 col-sm-12">
+                                  <label for="select">Gender</label>
+                                  <input type="text" name="gender" value="{{data.gender}}" class="form-control" readonly>
+                             </div>
+
+                             <div class="col-md-12 col-sm-12">
+                                <label for="date">Date Of Birth</label>
+                                <input type="date" name="dob" value="{{data.dob}}" class="form-control" readonly>
+                           </div>
+
+                            <div class="wow fadeInUp" data-wow-delay="0.8s">
+                                <div class="col-md-12 col-sm-12">
+                                    <label for="qualification">Qualification</label>
+                                     <input type="text" class="form-control" name="qualification" readonly value="{{data.qualification}}">
+                                </div>
+
+                                <div class="wow fadeInUp" data-wow-delay="0.8s">
+                                   <div class="col-md-12 col-sm-12">
+                                       <label for="experience">Experience</label>
+                                        <input type="text" class="form-control" name="experience" readonly value="{{data.experience}}">
+                                   </div>
+
+                                <div class="wow fadeInUp" data-wow-delay="0.8s">
+                                    <div class="col-md-12 col-sm-12">
+                                        <label for="description">Description</label>
+                                         <input type="text" class="form-control" name="description" readonly value="{{data.description}}">
+                                    </div>
+
+                                <div class="col-md-12 col-sm-12">
+                                    <label for="phone">Phone</label> 
+                                    <input type="text" class="form-control" name="phone" value="{{data.phone}}">
+                               </div>
+
+                                <div class="col-md-12 col-sm-12">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" name="email" value="{{data.email}}">
+                               </div>
+
+                               <div class="wow fadeInUp" data-wow-delay="0.8s">
+                                <div class="col-md-12 col-sm-12">
+                                     <label for="image">Photo</label><br>
+                                     <img src="{{data.photo}}" width="100" height="100" >
+                                </div>
+   
+
+                             <div class="col-md-12 col-sm-12">
+                               
+                              <label for="adhar">Adhar</label>
+                              <input type="text" class="form-control" name="adhar" value="{{data.adhar}}" readonly>
+
+                                  <button class="form-control" id="cf-submit" name="submit">Update</button>
+                             </div>
+                        </div>
+                  </form>
+              </div>
+
+         </div>
+    </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,19 @@
+
+#view div{
+    border-style: double;
+    border-color: black;
+    width: 270px;
+    height: 300px;
+    text-align: center;
+    padding-top: 30px;
+    margin-left: 55px;
+    padding-bottom: 50px;
+    margin-top: 30px;
+    color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+    font-weight: 700;
+    float: left;
+    background-color: rgb(245, 255, 198);
+    border-radius: 10px;
+}

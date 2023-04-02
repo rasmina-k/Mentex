@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/table.css' %}">
+
+</head>
+<body>
+
+    {% include "expmentalabilitymenu.html" %}
+
+    <h2>Result Table</h2>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>Test Number</th>
+            <th>User Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Score</th>
+            <th>Interference</th>
+            <th>Date</th>
+
+        </tr>
+        </thead>
+        <tbody>
+            {% for value in data %}
+        <tr>
+            <td>{{value.test_no}}</td>
+            <td>{{value.user_id.user_name}}</td>
+            <td>{{value.user_id.address}}</td>
+            <td>{{value.user_id.phone}}</td>
+            <td>{{value.user_id.email}}</td>
+            <td>{{value.score}}</td>
+            <td>{{value.interference}}</td>
+            <td>{{value.date}}</td>
+        </tr>
+        {% endfor %}
+        <tbody>
+    </table>
+</div>
+</body>
+</html>

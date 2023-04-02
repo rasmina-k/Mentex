@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/table.css' %}">
+
+</head>
+<body>
+
+    {% include "expmentalabilitymenu.html" %}
+
+    <h2>Booking Table</h2>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>Expert Name</th>
+            <th>User Name</th>
+            <th>Booking Date</th>
+            <th>Booking Time</th>
+            <th>Status</th>
+            <th>Accept</th>
+            <th>Reject</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for value in data %}
+        <tr>
+            
+            <td>{{value.expert_id.expert_name}}</td>
+            <td>{{value.user_id.user_name}}</td>
+            <td>{{value.bookingdate}}</td>
+            <td>{{value.bookingtime}}</td>
+            <td>{{value.status}}</td>
+            <td><a href="/accept_booking/{{value.booking_id}}">Accept</a></td>
+            <td><a href="/reject_booking/{{value.booking_id}}">Reject</a></td>
+
+        </tr>
+        {% endfor %}
+        <tbody>
+    </table>
+</div>
+</body>
+</html>

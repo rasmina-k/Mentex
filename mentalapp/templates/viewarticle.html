@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/table.css' %}">
+
+</head>
+<body>
+
+    {% include "expsexeducationmenu.html" %}
+
+    <h2>Article Table</h2>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>Expert Name</th>
+            <th>Uploaded Date</th>
+            <th>Article</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for value in data %}
+        <tr>
+            
+            <td>{{value.expert_id.expert_name}}</td>
+            <td>{{value.uploaded_date}}</td>
+            <td><a href="{{value.article}}">{{value.article}}</a></td>
+            <td><a href="/delarticle/{{value.article_id}}">Delete</a></td>
+
+        </tr>
+        {% endfor %}
+        <tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/divis.css' %}">
+
+</head>
+<body>
+
+    {% include "publicmenu.html" %}
+
+    <center><h2><u>Events</h2></center></u>
+            <div id="view">
+                {% for data in data %}
+                <div>
+                    <img src="{{data.photo}}" width="100" height="100"><br><br>
+                    {{data.event}}<br>
+                    {{data.event_date}}<br>
+                    {{data.status}}<br>      
+                    </div>
+                    {% endfor %}
+                </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/table.css' %}">
+
+</head>
+<body>
+
+    {% include "usersexeducationmenu.html" %}
+
+    <h2>Expert Table</h2>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>Expert Name</th>
+            <th>Address</th>
+            <th>Gender</th>
+            <th>DOB</th>
+            <th>Qualification</th>
+            <th>Experience</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Adhar</th>
+            <th>Image</th>
+            <th>Book_Now</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for value in data1 %}
+        <tr>
+            
+            <td>{{value.expert_name}}</td>
+            <td>{{value.address}}</td>
+            <td>{{value.gender}}</td>
+            <td>{{value.dob}}</td>
+            <td>{{value.qualification}}</td>
+            <td>{{value.experience}}</td>
+            <td>{{value.category}}</td>
+            <td>{{value.description}}</td>
+            <td>{{value.phone}}</td>
+            <td>{{value.email}}</td>
+            <td>{{value.adhar}}</td>
+            <td><img src="{{value.photo}}" width="100" height="100"></td>
+            <td><a href="/bookexpert1/{{value.expert_id}}">Book_Now</a></td>
+        </tr>
+        {% endfor %}
+        <tbody>
+    </table>
+</div>
+</body>
+</html>

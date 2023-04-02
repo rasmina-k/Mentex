@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/table1.css' %}">
+
+</head>
+<body>
+    {% include "usermentalabilitymenu.html" %}
+<div class="table-wrapper">
+    <table class="fl-table">
+        <tbody>
+            {% for value in data %}
+        <tr>
+            <td>{{value.question}}</td>
+            <td><a href="/addresult/{{value.question_no}}">Yes</a></td>
+            <td><a href="/noresult/{{value.question_no}}">No</a></td>
+        </tr>
+        {% endfor %}
+        <tbody>
+    </table><br>
+<button><a href="/finishtest/">FINISH TEST</a></button>
+</div>
+</body>
+</html>

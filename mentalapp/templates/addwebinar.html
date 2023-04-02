@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+         
+<script>
+     function valid()
+     {
+
+     if(form.topic.value=="")
+     {
+        alert("**Enter Webinar Topic**"); 
+        form.topic.focus();
+        return false;
+     }
+     if(!isNaN(form.topic.value))
+     {
+         alert("** Fill the Topic in characters **");
+         form.topic.focus();
+         return false;
+     }
+          if(form.webinardate.value=="")
+     {
+        alert("**Enter Webinar Date**"); 
+        form.webinardate.focus();
+        return false;
+     }
+         enterDate=new Date(form.webinardate.value);
+         curDate= new Date();
+         if(curDate>enterDate)
+         {
+             alert("Invalid Date");
+             form.webinardate.focus();
+             return false;
+         }
+         return true;
+ 
+ }
+     </script>
+    
+</head>
+
+<body>
+
+     {% include "expmentalabilitymenu.html" %}
+
+
+    <!-- MAKE AN APPOINTMENT -->
+ <section id="appointment" data-stellar-background-ratio="3">
+    <div class="container">
+         <div class="row">
+
+              <div class="col-md-6 col-sm-6">
+                   <img src="{% static 'images/mentalform01.webp' %}" width="600px" height="500px" class="img-responsive1" alt="">
+              </div>
+
+              <div class="col-md-6 col-sm-6">
+                   <!-- CONTACT FORM HERE -->
+                   <form id="appointment-form" name="form" onsubmit="return valid()" role="form" method="post" enctype="multipart/form-data" action="/addwebinar1/">
+                         {% csrf_token %}
+                        <!-- SECTION TITLE -->
+                        <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
+                             <h2>&nbsp;Webinar</h2>
+                        </div>
+
+                        <div class="wow fadeInUp" data-wow-delay="0.8s">
+                            <div class="col-md-12 col-sm-12">
+                                <label for="webinarid">Webinar Id</label><br>
+                                 <input type="text" class="form-control" id="expid" name="webinarid" value="{{webinar_id}}">
+                            </div>
+
+                            <div class="wow fadeInUp" data-wow-delay="0.8s">
+                                <div class="col-md-12 col-sm-12">
+                                    <label for="expertid">Expert Id</label><br>
+                                     <input type="text" class="form-control" id="expid" name="expertid" value="{{data.expert_id}}">
+                                </div>   
+                                
+                                <div class="wow fadeInUp" data-wow-delay="0.8s">
+                                    <div class="col-md-12 col-sm-12">
+                                        <label for="topic">Topic</label><br>
+                                     <input type="text" class="form-control" id="image" placeholder="Topic" name="topic">
+                                    </div> 
+                     
+                                <div class="col-md-12 col-sm-12">
+                            
+                                <label for="webinardate">Webinar Date</label><br>
+                                     <input type="date" class="form-control" id="image" name="webinardate"><br>
+                                  <button class="form-control" id="cf-submit" name="submit">Submit</button>
+                             </div>
+                        </div>
+                  </form>
+              </div>
+
+         </div>
+    </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>
+
+

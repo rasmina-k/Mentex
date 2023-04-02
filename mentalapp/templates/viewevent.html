@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/table.css' %}">
+
+</head>
+<body>
+
+    {% include "adminmenu.html" %}
+
+    <h2>Event Table</h2>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>Event Name</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Photo</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for value in data1 %}
+        <tr>
+            
+            <td>{{value.event}}</td>
+            <td>{{value.event_date}}</td>
+            <td>{{value.status}}</td>
+            <td><img src="{{value.photo}}" width="100" height="100"></td>
+            <td><a href="/remove_event/{{value.event_id}}">Delete</a></td>
+
+        </tr>
+        {% endfor %}
+        <tbody>
+    </table>
+</div>
+</body>
+</html>

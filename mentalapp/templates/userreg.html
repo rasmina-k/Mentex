@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+         
+<script>
+     function valid()
+     {
+     if(form.username.value=="")
+     {
+        alert("**Enter your Name**"); 
+        form.name.focus();
+        return false;
+     }
+     if(!isNaN(form.username.value))
+     {
+         alert("** Fill the Name in characters **");
+         form.name.focus();
+         return false;
+     }
+     if(form.address.value=="")
+     {
+        alert("**Enter your Address**"); 
+        form.address.focus();
+        return false;
+     }
+     if(form.phone.value=="")
+     {
+        alert("**Enter your phonenumber**"); 
+        form.phone.focus();
+        return false;
+     }
+     var a=form.phone.value;
+     if(isNaN(a))
+     {
+         alert("**Phonenumber must be in numbers**");
+         form.phone.focus();
+         return false;
+     }
+     if(a.length<10)
+     {
+      alert("**Phonenumber must contain 10 numbers**");
+      form.phone.focus();
+     return false;
+     }
+     if(a.length>10)
+     {
+      alert("**Phonenumber must contain 10 numbers**");
+      form.phone.focus();
+     return false;
+     }
+     if(form.email.value=="")
+     {
+        alert("**Enter your Email**"); 
+        form.email.focus();
+        return false;
+     }
+     var regularExpression = new RegExp("^[a-z]+(\.[a-z0-9_\+-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*\.([a-z]{2,4})$");
+     if (!regularExpression.test(form.email.value))
+     {
+         alert("Enter a valid Email ID.For example:'name@gmail.com'..");
+         form.email.focus();
+         return false;
+     }
+     return true;
+ }
+
+     </script>
+    
+</head>
+
+<body>
+
+     {% include "publicmenu.html" %}
+
+
+    <!-- MAKE AN APPOINTMENT -->
+ <section id="appointment" data-stellar-background-ratio="3">
+    <div class="container">
+         <div class="row">
+
+              <div class="col-md-6 col-sm-6">
+                   <img src="{% static 'images/mentalform01.webp' %}" width="630px" height="678px" class="img-responsive1" alt="">
+              </div>
+
+              <div class="col-md-6 col-sm-6">
+                   <!-- CONTACT FORM HERE -->
+                   <form id="appointment-form" name="form" onsubmit="return valid()" role="form" method="post" enctype="multipart/form-data" action="/userreg1/">
+                         {% csrf_token %}
+                        <!-- SECTION TITLE -->
+                        <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
+                             <h2>&nbsp;User</h2>
+                        </div>
+
+                        <div class="wow fadeInUp" data-wow-delay="0.8s">
+                            <div class="col-md-12 col-sm-12">
+                                <label for="name">User Id</label>
+                                 <input type="text" class="form-control" id="expid" name="userid" value="{{userid}}">
+                            </div>
+
+                        <div class="wow fadeInUp" data-wow-delay="0.8s">
+                             <div class="col-md-12 col-sm-12">
+                                <label for="name">User Name</label>
+                                  <input type="text" class="form-control" id="name" name="username" placeholder="Full Name">
+                             </div>
+
+                             <div class="wow fadeInUp" data-wow-delay="0.8s">
+                                <div class="col-md-12 col-sm-12">
+                                    <label for="address">Address</label>
+                                    <textarea class="form-control" rows="3" id="message" name="address" placeholder="Address"></textarea>
+                                </div>     
+                                
+                                <div class="col-md-12 col-sm-12">
+                                    <label for="select">Category</label>
+                                    <select class="form-control" name="category">
+                                         <option>Mental_Ability</option>
+                                         <option>Sex_Education</option>
+                                    </select>
+                               </div>
+                
+                                <div class="col-md-12 col-sm-12">
+                                    <label for="phone">Phone</label> 
+                                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone">
+                               </div>
+                              
+
+                             <div class="col-md-12 col-sm-12">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Your Email">
+                                  
+                                  <button class="form-control" id="cf-submit" name="submit">Submit</button>
+                             </div>
+                        </div>
+                  </form>
+              </div>
+
+         </div>
+    </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>
+
+
