@@ -1,6 +1,7 @@
 # Mentex
 Web application using python django (Acadamic mini project)
 
+
 \\...Objective
 This project provides an interface between experts (doctors, psychologists) and users (students, the general public) in order to provide knowledge about sex education and mental health,
 where users can meet and interact with experts. The application is designed to support people who are mentally and physically depressed. Also,
